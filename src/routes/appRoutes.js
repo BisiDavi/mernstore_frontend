@@ -2,21 +2,22 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import {
   Layout,
-  Order,
-  Payment,
-  Login,
-  Profile,
-  Product,
-  Register,
-  Cart,
-  UserList,
-  UserEdit,
-  ProductList,
-  ProductEdit,
-  OrderList,
-  Home,
-  Shipping,
-  PlaceOrder
+  HomeScreen,
+  ProductScreen,
+  CartScreen,
+  LoginScreen,
+  RegisterScreen,
+  ProfileScreen,
+  ShippingScreen,
+  PaymentScreen,
+  PlaceOrderScreen,
+  OrderScreen,
+  UserListScreen,
+  MerchantRegisterScreen,
+  UserEditScreen,
+  ProductListScreen,
+  ProductEditScreen,
+  OrderListScreen
 } from '../imports';
 
 const AppRoutes = () => {
@@ -25,33 +26,44 @@ const AppRoutes = () => {
       <Layout>
         <main className="py-3">
           <Container>
-            <Route path="/order/:id" component={Order} />
-            <Route path="/shipping" component={Shipping} />
-            <Route path="/payment" component={Payment} />
-            <Route path="/placeorder" component={PlaceOrder} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/product/:id" component={Product} />
-            <Route path="/cart/:id?" component={Cart} />
-            <Route path="/admin/userlist?" component={UserList} />
-            <Route path="/admin/user/:id/edit?" component={UserEdit} />
-            <Route path="/admin/productlist" component={ProductList} exact />
+            <Route path="/order/:id" component={OrderScreen} />
+            <Route path="/shipping" component={ShippingScreen} />
+            <Route path="/payment" component={PaymentScreen} />
+            <Route path="/placeorder" component={PlaceOrderScreen} />
+            <Route path="/login" component={LoginScreen} />
+            <Route path="/register" component={RegisterScreen} />
+            <Route
+              path="/merchant-register"
+              component={MerchantRegisterScreen}
+            />
+            <Route path="/profile" component={ProfileScreen} />
+            <Route path="/product/:id" component={ProductScreen} />
+            <Route path="/cart/:id?" component={CartScreen} />
+            <Route path="/admin/userlist" component={UserListScreen} />
+            <Route path="/admin/user/:id/edit" component={UserEditScreen} />
+            <Route
+              path="/admin/productlist"
+              component={ProductListScreen}
+              exact
+            />
             <Route
               path="/admin/productlist/:pageNumber"
-              component={ProductList}
+              component={ProductListScreen}
               exact
             />
-            <Route path="/admin/product/:id/edit" component={ProductEdit} />
-            <Route path="/admin/orderlist" component={OrderList} />
-            <Route path="/search/:keyword" component={Home} exact />
-            <Route path="/page/:pageNumber" component={Home} exact />
+            <Route
+              path="/admin/product/:id/edit"
+              component={ProductEditScreen}
+            />
+            <Route path="/admin/orderlist" component={OrderListScreen} />
+            <Route path="/search/:keyword" component={HomeScreen} exact />
+            <Route path="/page/:pageNumber" component={HomeScreen} exact />
             <Route
               path="/search/:keyword/page/:pageNumber"
-              component={Home}
+              component={HomeScreen}
               exact
             />
-            <Route path="/" component={Home} exact />
+            <Route path="/" component={HomeScreen} exact />
           </Container>
         </main>
       </Layout>

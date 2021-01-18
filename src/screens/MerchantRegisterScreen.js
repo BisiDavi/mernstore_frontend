@@ -7,7 +7,7 @@ import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
 import { register } from '../actions/userActions';
 
-const Register = ({ location, history }) => {
+const MerchantRegisterScreen = ({ location, history }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -100,4 +100,4 @@ const Register = ({ location, history }) => {
   );
 };
 
-export default Register;
+export default MerchantRegisterScreen;
