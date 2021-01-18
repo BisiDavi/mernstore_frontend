@@ -14,6 +14,7 @@ import {
   OrderScreen,
   UserListScreen,
   MerchantRegisterScreen,
+  MerchantLoginScreen,
   UserEditScreen,
   ProductListScreen,
   ProductEditScreen,
@@ -31,11 +32,12 @@ const AppRoutes = () => {
             <Route path="/payment" component={PaymentScreen} />
             <Route path="/placeorder" component={PlaceOrderScreen} />
             <Route path="/login" component={LoginScreen} />
-            <Route path="/register" component={RegisterScreen} />
             <Route
               path="/merchant-register"
               component={MerchantRegisterScreen}
             />
+            <Route path="/merchant-login" component={MerchantLoginScreen} />
+            <Route path="/register" component={RegisterScreen} />
             <Route path="/profile" component={ProfileScreen} />
             <Route path="/product/:id" component={ProductScreen} />
             <Route path="/cart/:id?" component={CartScreen} />

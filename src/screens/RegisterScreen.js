@@ -95,6 +95,12 @@ const RegisterScreen = ({ location, history }) => {
             Login
           </Link>
         </Col>
+        <Col>
+          Do you want to be a Merchant, Register as a Merchant{' '}
+          <Link to={redirect ? `/merchant-register?redirect=${redirect}` : '/merchant-register'}>
+            Login
+          </Link>
+        </Col>
       </Row>
     </FormContainer>
   )

@@ -1,20 +1,28 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { LinkContainer } from 'react-router-bootstrap'
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
-import SearchBox from './SearchBox'
-import { logout } from '../actions/userActions'
+import React from 'react';
+import { Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import SearchBox from './SearchBox';
+import { logout } from '../actions/userActions';
+import { logoutMerchant } from '../actions/merchantActions';
 
 const Header = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo } = userLogin
+  const userLogin = useSelector(state => state.userLogin);
+  const merchantLogin = useSelector(state => state.merchantLogin);
+  const { userInfo } = userLogin;
+  const { merchantInfo } = merchantLogin;
+  console.log(userInfo, 'userInfo');
+  console.log(merchantInfo, 'merchantInfo');
 
   const logoutHandler = () => {
-    dispatch(logout())
-  }
+    dispatch(logout());
+  };
+  const logoutMerchantHandler = () => {
+    dispatch(logoutMerchant());
+  };
 
   return (
     <header>
@@ -28,9 +36,12 @@ const Header = () => {
             <Route render={({ history }) => <SearchBox history={history} />} />
             <Nav className="ml-auto">
               <LinkContainer to="/merchant-register">
-                <Nav.Link>
-                  <i className="fas fa-hand-holding-usd"></i> Become a Merchant
-                </Nav.Link>
+                {merchantInfo ? <p>Welcome Merchant {merchantInfo.name}</p> : (
+                  <Nav.Link>
+                    <i className="fas fa-hand-holding-usd"></i> Become a
+                    Merchant
+                  </Nav.Link>
+                )}
               </LinkContainer>
               <LinkContainer to="/cart">
                 <Nav.Link>
@@ -43,6 +54,15 @@ const Header = () => {
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Item onClick={logoutHandler}>
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              ) : merchantInfo ? (
+                <NavDropdown title={merchantInfo.name} id="username">
+                  <LinkContainer to="/profile">
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  <NavDropdown.Item onClick={logoutMerchantHandler}>
                     Logout
                   </NavDropdown.Item>
                 </NavDropdown>
@@ -72,6 +92,6 @@ const Header = () => {
       </Navbar>
     </header>
   );
-}
+};
 
-export default Header
+export default Header;
