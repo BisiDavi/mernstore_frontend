@@ -5,7 +5,6 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import SearchBox from './SearchBox';
 import { logout } from '../actions/userActions';
-import { logoutMerchant } from '../actions/merchantActions';
 import '../App.css';
 
 const Header = () => {
