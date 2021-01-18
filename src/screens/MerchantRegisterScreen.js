@@ -20,7 +20,6 @@ const MerchantRegisterScreen = ({ location, history }) => {
   return (
     <FormContainer>
       <Notify
-        pageLink="#"
         text="Dear Merchant, you need to make a payment of $20 to become an approved merchant of Jumga store"
       />
       <h1>Become A Merchant</h1>

@@ -1,20 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ListGroup, Button } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
 import { FormContainer } from '../imports';
 
 const MerchantApprovalPayment = ({ location, history }) => {
-  const merchantLogin = useSelector(state => state.merchantLogin);
-  const { merchantInfo } = merchantLogin;
-
-  const redirect = location.search ? location.search.split('=')[1] : '/';
-
-  useEffect(() => {
-    if (merchantInfo) {
-      history.push(redirect);
-    }
-  }, [history, merchantInfo, redirect]);
-
   return (
     <FormContainer>
       <h1>Thanks for choosing to be an approved merchant with Jumga</h1>

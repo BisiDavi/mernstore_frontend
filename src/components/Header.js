@@ -29,7 +29,7 @@ const Header = () => {
             <Route render={({ history }) => <SearchBox history={history} />} />
             <Nav className="ml-auto">
               <LinkContainer to="/merchant-register">
-                {userInfo !== null && userInfo.merchant ? (
+                {userInfo !== null ? (
                   <p className="merchant">Welcome Merchant {userInfo.name}</p>
                 ) : (
                   <Nav.Link>
