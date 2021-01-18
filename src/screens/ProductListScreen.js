@@ -36,19 +36,13 @@ const ProductListScreen = ({ history, match }) => {
   } = productCreate;
 
   const userLogin = useSelector(state => state.userLogin);
-  const merchantLogin = useSelector(state => state.merchantLogin);
   const { userInfo } = userLogin;
-  const { merchantInfo } = merchantLogin;
-  console.log('merchantInfo', merchantInfo);
+ 
 
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET });
-    if (userInfo === null && !merchantInfo) {
+    if (!userInfo || !userInfo.isAdmin) {
       history.push('/login');
-    } else if (userInfo !== null && (!userInfo || !userInfo.isAdmin)) {
-      history.push('/login');
-    } else {
-      return <h1>Not Authorized</h1>;
     }
 
     if (successCreate) {
@@ -64,7 +58,6 @@ const ProductListScreen = ({ history, match }) => {
     successCreate,
     createdProduct,
     pageNumber,
-    merchantInfo
   ]);
 
   const deleteHandler = id => {

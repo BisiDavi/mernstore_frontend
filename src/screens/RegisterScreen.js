@@ -63,9 +63,7 @@ const RegisterScreen = ({ location, history }) => {
             onChange={e => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        {/* <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group> */}
+        
         <Form.Group controlId="merchant">
           <Form.Check
             type="checkbox"

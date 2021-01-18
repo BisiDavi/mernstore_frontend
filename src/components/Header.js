@@ -12,17 +12,10 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const userLogin = useSelector(state => state.userLogin);
-  const merchantLogin = useSelector(state => state.merchantLogin);
   const { userInfo } = userLogin;
-  const { merchantInfo } = merchantLogin;
-  console.log(userInfo, 'userInfo');
-  console.log(merchantInfo, 'merchantInfo');
 
   const logoutHandler = () => {
     dispatch(logout());
-  };
-  const logoutMerchantHandler = () => {
-    dispatch(logoutMerchant());
   };
 
   return (
@@ -37,10 +30,8 @@ const Header = () => {
             <Route render={({ history }) => <SearchBox history={history} />} />
             <Nav className="ml-auto">
               <LinkContainer to="/merchant-register">
-                {merchantInfo ? (
-                  <p className="merchant">
-                    Welcome Merchant {merchantInfo.name}
-                  </p>
+                {userInfo !== null && userInfo.merchant ? (
+                  <p className="merchant">Welcome Merchant {userInfo.name}</p>
                 ) : (
                   <Nav.Link>
                     <i className="fas fa-hand-holding-usd"></i> Become a
@@ -62,15 +53,6 @@ const Header = () => {
                     Logout
                   </NavDropdown.Item>
                 </NavDropdown>
-              ) : merchantInfo ? (
-                <NavDropdown title={merchantInfo.name} id="username">
-                  <LinkContainer to="/profile">
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
-                  </LinkContainer>
-                  <NavDropdown.Item onClick={logoutMerchantHandler}>
-                    Logout
-                  </NavDropdown.Item>
-                </NavDropdown>
               ) : (
                 <LinkContainer to="/login">
                   <Nav.Link>
@@ -83,16 +65,6 @@ const Header = () => {
                   <LinkContainer to="/admin/userlist">
                     <NavDropdown.Item>Users</NavDropdown.Item>
                   </LinkContainer>
-                  <LinkContainer to="/admin/productlist">
-                    <NavDropdown.Item>Products</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to="/admin/orderlist">
-                    <NavDropdown.Item>Orders</NavDropdown.Item>
-                  </LinkContainer>
-                </NavDropdown>
-              )}
-              {merchantInfo && (
-                <NavDropdown title="Admin" id="adminmenu">
                   <LinkContainer to="/admin/productlist">
                     <NavDropdown.Item>Products</NavDropdown.Item>
                   </LinkContainer>

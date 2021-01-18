@@ -16,13 +16,14 @@ export { default as PlaceOrderScreen } from '../screens/PlaceOrderScreen';
 export { default as OrderListScreen } from '../screens/OrderListScreen';
 export { default as HomeScreen } from '../screens/HomeScreen';
 export { default as MerchantRegisterScreen } from '../screens/MerchantRegisterScreen';
-export { default as MerchantLoginScreen } from '../screens/MerchantLoginScreen';
+export { default as MerchantApprovalPayment } from '../screens/MerchantApprovalPayment';
 export { default as Header } from '../components/Header';
 export { default as Footer } from '../components/Footer';
 
 export { default as Message } from '../components/Message';
 export { default as Loader } from '../components/Loader';
 export { default as Paginate } from '../components/Paginate';
+export { default as Product } from '../components/Product';
 export { default as ProductCarousel } from '../components/ProductCarousel';
 export { default as Meta } from '../components/Meta';
 export { default as Rating } from '../components/Rating';

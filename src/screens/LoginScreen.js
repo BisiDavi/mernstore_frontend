@@ -67,18 +67,6 @@ const LoginScreen = ({ location, history }) => {
             Register
           </Link>
         </Col>
-        <Col>
-          Are you a merchant, Login as a Merchant{' '}
-          <Link
-            to={
-              redirect
-                ? `/merchant-login?redirect=${redirect}`
-                : '/merchant-login'
-            }
-          >
-            Login
-          </Link>
-        </Col>
       </Row>
     </FormContainer>
   );

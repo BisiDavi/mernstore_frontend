@@ -14,16 +14,15 @@ const OrderListScreen = ({ history }) => {
 
   const userLogin = useSelector(state => state.userLogin);
   const { userInfo } = userLogin;
-  const merchantLogin = useSelector(state => state.merchantLogin);
-  const { merchantInfo } = merchantLogin;
+ 
 
   useEffect(() => {
-    if ((userInfo && userInfo.isAdmin) || merchantInfo) {
+    if (userInfo && userInfo.isAdmin) {
       dispatch(listOrders());
     } else {
       history.push('/login');
     }
-  }, [dispatch, history, userInfo, merchantInfo]);
+  }, [dispatch, history, userInfo]);
 
   return (
     <>
