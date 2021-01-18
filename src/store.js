@@ -77,7 +77,7 @@ const userInfoFromStorage = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo'))
   : null;
 
-const merchantInfoFromStorage = localStorage.getItem('merchantnfo')
+const merchantInfoFromStorage = localStorage.getItem('merchantInfo')
   ? JSON.parse(localStorage.getItem('merchantInfo'))
   : null;
 

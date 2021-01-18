@@ -31,7 +31,7 @@ const MerchantLoginScreen = ({ location, history }) => {
 
   return (
     <FormContainer>
-      <h1>Sign In</h1>
+      <h1>Merchant Sign In</h1>
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
@@ -63,7 +63,13 @@ const MerchantLoginScreen = ({ location, history }) => {
       <Row className="py-3">
         <Col>
           New Merchant ?{' '}
-          <Link to={redirect ? `/merchant-register?redirect=${redirect}` : '/merchant-register'}>
+          <Link
+            to={
+              redirect
+                ? `/merchant-register?redirect=${redirect}`
+                : '/merchant-register'
+            }
+          >
             Register
           </Link>
         </Col>

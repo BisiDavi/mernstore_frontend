@@ -23,7 +23,7 @@ import {
   MERCHANT_DELETE_FAIL,
   MERCHANT_UPDATE_FAIL,
   MERCHANT_UPDATE_SUCCESS,
-  MERCHANT_UPDATE_REQUEST
+  MERCHANT_UPDATE_REQUEST,
 } from '../constants/merchantConstants';
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants';
 
@@ -123,7 +123,7 @@ export const getMerchantDetails = id => async (dispatch, getState) => {
     });
 
     const {
-      userLogin: { merchantInfo }
+      merchantLogin: { merchantInfo }
     } = getState();
 
     const config = {
@@ -156,7 +156,7 @@ export const updateUserProfile = user => async (dispatch, getState) => {
     });
 
     const {
-      userLogin: { merchantInfo }
+      merchantLogin: { merchantInfo }
     } = getState();
 
     const config = {
@@ -194,7 +194,7 @@ export const listUsers = () => async (dispatch, getState) => {
     });
 
     const {
-      userLogin: { merchantInfo }
+      merchantLogin: { merchantInfo }
     } = getState();
 
     const config = {
@@ -227,7 +227,7 @@ export const deleteUser = id => async (dispatch, getState) => {
     });
 
     const {
-      userLogin: { merchantInfo }
+      merchantLogin: { merchantInfo }
     } = getState();
 
     const config = {
@@ -257,7 +257,7 @@ export const updateUser = user => async (dispatch, getState) => {
     });
 
     const {
-      userLogin: { merchantInfo }
+      merchantLogin: { merchantInfo }
     } = getState();
 
     const config = {
@@ -286,3 +286,4 @@ export const updateUser = user => async (dispatch, getState) => {
     });
   }
 };
+

@@ -7,6 +7,16 @@
   pointer-events: none;
 }
 
+p.merchant {
+  overflow: hidden;
+  width: 250px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: 12px;
+  color: yellow !important;
+  font-weight: bold;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
