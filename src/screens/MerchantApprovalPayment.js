@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ListGroup, Button, Row, Col } from 'react-bootstrap';
+import { Form, ListGroup, Button, Row, Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { FormContainer } from '../imports';
 
@@ -34,7 +34,12 @@ const MerchantApprovalPayment = ({ location, history }) => {
         <ListGroup.Item>We offer reliable dispatcher Services.</ListGroup.Item>
       </ListGroup>
 
-      <Button type="submit" className="mt-3" variant="primary">
+      <Button
+        type="submit"
+        href="https://ravesandbox.flutterwave.com/pay/n3pg2ywqirns"
+        className="mt-3"
+        variant="primary"
+      >
         Make Payment: $20
       </Button>
     </FormContainer>
