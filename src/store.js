@@ -20,15 +20,7 @@ import {
   userDeleteReducer,
   userUpdateReducer
 } from './reducers/userReducers';
-import {
-  merchantLoginReducer,
-  merchantRegisterReducer,
-  merchantDetailsReducer,
-  merchantUpdateProfileReducer,
-  merchantListReducer,
-  merchantDeleteReducer,
-  merchantUpdateReducer
-} from './reducers/merchantReducers';
+import { merchantSubscriptionReducer } from './reducers/merchantReducers';
 import {
   orderCreateReducer,
   orderDetailsReducer,
@@ -54,13 +46,7 @@ const reducer = combineReducers({
   userList: userListReducer,
   userDelete: userDeleteReducer,
   userUpdate: userUpdateReducer,
-  merchantLogin: merchantLoginReducer,
-  merchantRegister: merchantRegisterReducer,
-  merchantDetails: merchantDetailsReducer,
-  merchantUpdateProfile: merchantUpdateProfileReducer,
-  merchantList: merchantListReducer,
-  merchantDelete: merchantDeleteReducer,
-  merchantUpdate: merchantUpdateReducer,
+  merchantSubscription: merchantSubscriptionReducer,
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,

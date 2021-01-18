@@ -1,8 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-boostrap';
 import { ListGroup, Button } from 'react-bootstrap';
+import { MerchantSubscriptionPayment } from '../actions/merchantActions';
 import { FormContainer } from '../imports';
 
 const MerchantApprovalPayment = ({ location, history }) => {
+  const dispatch = useDispatch();
+
+  const makeSubscriptionPayment = () => {
+    dispatch(MerchantSubscriptionPayment());
+  };
   return (
     <FormContainer>
       <h1>Thanks for choosing to be an approved merchant with Jumga</h1>
@@ -23,7 +30,7 @@ const MerchantApprovalPayment = ({ location, history }) => {
 
       <Button
         type="submit"
-        href="https://ravesandbox.flutterwave.com/pay/n3pg2ywqirns"
+        onClick={makeSubscriptionPayment}
         className="mt-3"
         variant="primary"
       >
