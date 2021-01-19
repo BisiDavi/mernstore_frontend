@@ -11,6 +11,7 @@ const RegisterScreen = ({ location, history }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [merchant, setMerchant] = useState(false);
+  const [approvedMerchant, setApprovedMerchant] = useState(false);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState(null);
@@ -33,7 +34,7 @@ const RegisterScreen = ({ location, history }) => {
     if (password !== confirmPassword) {
       setMessage('Passwords do not match');
     } else {
-      dispatch(register(name, email, merchant, password));
+      dispatch(register(name, email, merchant, approvedMerchant,password));
     }
   };
 
@@ -63,13 +64,24 @@ const RegisterScreen = ({ location, history }) => {
             onChange={e => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        
+
+        <Form.Group controlId="setApprovedMerchant">
+          <Form.Label srOnly>Approved Merchant</Form.Label>
+          <Form.Control
+            type="text"
+            className="d-none"
+            placeholder="approved merchant"
+            value={approvedMerchant}
+            onChange={e => setApprovedMerchant(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+
         <Form.Group controlId="merchant">
           <Form.Check
             type="checkbox"
             checked={merchant}
             value={merchant}
-            onChange={() =>setMerchant(!merchant)}
+            onChange={() => setMerchant(!merchant)}
             label="Become a Merchant"
           />
         </Form.Group>
@@ -105,7 +117,7 @@ const RegisterScreen = ({ location, history }) => {
           <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
             Login
           </Link>
-        </Col>        
+        </Col>
       </Row>
     </FormContainer>
   );

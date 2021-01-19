@@ -5,7 +5,7 @@ import {
   PAY_MERCHANT_SUBSCRIPTION_FEE_FAILED,
   RAVE_CONNECTION_REQUEST_FAILED,
   RAVE_CONNECTION_REQUEST,
-  RAVE_CONNECTION_SUCCESSFUL,
+  RAVE_CONNECTION_SUCCESSFUL
 } from '../constants/merchantConstants';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -82,7 +82,7 @@ export const merchantPayment = () => async (dispatch, getState) => {
       amount: '20',
       currency: 'USD',
       redirect_url:
-        'https://mernstore-frontend-git-main.bisidavi.vercel.app/merchant-approval-payment-made',
+        'https://mernstore-frontend-git-main.bisidavi.vercel.app/merchant',
       payment_options: 'card',
       customer: {
         name: userInfo.name,
@@ -100,7 +100,7 @@ export const merchantPayment = () => async (dispatch, getState) => {
       const { data } = resultData.payload;
       const { link } = data;
       console.log('loadink', link);
-      window.location.href= link;
+      window.location.href = link;
     };
 
     const connectionFailed = error => {

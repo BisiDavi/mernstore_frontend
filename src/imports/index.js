@@ -18,6 +18,7 @@ export { default as HomeScreen } from '../screens/HomeScreen';
 export { default as MerchantRegisterScreen } from '../screens/MerchantRegisterScreen';
 export { default as MerchantPayment } from '../screens/MerchantPayment';
 export { default as MerchantApprovalPayment } from '../screens/MerchantApprovalPayment';
+export { default as MerchantScreen } from '../screens/MerchantScreen';
 export { default as Header } from '../components/Header';
 export { default as Footer } from '../components/Footer';
 

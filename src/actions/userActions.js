@@ -70,7 +70,7 @@ export const logout = () => dispatch => {
   dispatch({ type: USER_LIST_RESET });
 };
 
-export const register = (name, email, merchant, password) => async dispatch => {
+export const register = (name, email, merchant,approvedMerchant, password) => async dispatch => {
   try {
     dispatch({
       type: USER_REGISTER_REQUEST
@@ -84,7 +84,7 @@ export const register = (name, email, merchant, password) => async dispatch => {
 
     const { data } = await axiosInstance.post(
       '/api/users',
-      { name, email,merchant, password },
+      { name, email,merchant,approvedMerchant, password },
       config
     );
 
