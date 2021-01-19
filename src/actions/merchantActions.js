@@ -78,7 +78,7 @@ export const merchantPayment = () => async (dispatch, getState) => {
       amount: '20',
       currency: 'USD',
       redirect_url:
-        'https://mernstore-frontend-git-main.bisidavi.vercel.app/merchant-approval-payment',
+        'https://mernstore-frontend-git-main.bisidavi.vercel.app/merchant-approval-payment-made',
       payment_options: 'card',
       customer: {
         name: userInfo.name,
@@ -92,10 +92,7 @@ export const merchantPayment = () => async (dispatch, getState) => {
       {
         headers: {
           Authorization: `Bearer ${process.env.REACT_APP_SECRETKEY}`,
-          'Access-Control-Allow-Methods': 'POST,PUT,GET,DELETE, PATCH, OPTIONS',
-          'Access-Control-Request-Headers': ['Authorization', 'Content-Type'],
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
+          'Content-Type': 'application/json'
         }
       }
     );
