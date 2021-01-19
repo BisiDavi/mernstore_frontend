@@ -14,6 +14,7 @@ import {
   OrderScreen,
   UserListScreen,
   MerchantRegisterScreen,
+  MerchantPayment,
   MerchantApprovalPayment,
   UserEditScreen,
   ProductListScreen,
@@ -36,6 +37,7 @@ const AppRoutes = () => {
               path="/merchant-register"
               component={MerchantRegisterScreen}
             />
+            <Route path="/merchant-payment" component={MerchantPayment} />
             <Route path="/merchant-approval-payment" component={MerchantApprovalPayment} />
             <Route path="/register" component={RegisterScreen} />
             <Route path="/profile" component={ProfileScreen} />

@@ -20,7 +20,10 @@ import {
   userDeleteReducer,
   userUpdateReducer
 } from './reducers/userReducers';
-import { merchantSubscriptionReducer } from './reducers/merchantReducers';
+import {
+  merchantSubscriptionReducer,
+  merchantPaymentReducer
+} from './reducers/merchantReducers';
 import {
   orderCreateReducer,
   orderDetailsReducer,
@@ -47,6 +50,7 @@ const reducer = combineReducers({
   userDelete: userDeleteReducer,
   userUpdate: userUpdateReducer,
   merchantSubscription: merchantSubscriptionReducer,
+  merchantPayment: merchantPaymentReducer,
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
@@ -63,10 +67,6 @@ const userInfoFromStorage = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo'))
   : null;
 
-const merchantInfoFromStorage = localStorage.getItem('merchantInfo')
-  ? JSON.parse(localStorage.getItem('merchantInfo'))
-  : null;
-
 const shippingAddressFromStorage = localStorage.getItem('shippingAddress')
   ? JSON.parse(localStorage.getItem('shippingAddress'))
   : {};
@@ -76,8 +76,8 @@ const initialState = {
     cartItems: cartItemsFromStorage,
     shippingAddress: shippingAddressFromStorage
   },
-  userLogin: { userInfo: userInfoFromStorage },
-  merchantLogin: { merchantInfo: merchantInfoFromStorage }
+  userLogin: { userInfo: userInfoFromStorage }
+  
 };
 
 const middleware = [thunk];

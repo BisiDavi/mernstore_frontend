@@ -7,3 +7,6 @@ export const axiosInstance = axios.create({
     'Access-Control-Allow-Origin': '*'
   }
 });
+export const raveInstance = axios.create({
+  baseURL: 'https://api.flutterwave.com/v3/payments'
+});

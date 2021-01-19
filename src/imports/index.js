@@ -16,6 +16,7 @@ export { default as PlaceOrderScreen } from '../screens/PlaceOrderScreen';
 export { default as OrderListScreen } from '../screens/OrderListScreen';
 export { default as HomeScreen } from '../screens/HomeScreen';
 export { default as MerchantRegisterScreen } from '../screens/MerchantRegisterScreen';
+export { default as MerchantPayment } from '../screens/MerchantPayment';
 export { default as MerchantApprovalPayment } from '../screens/MerchantApprovalPayment';
 export { default as Header } from '../components/Header';
 export { default as Footer } from '../components/Footer';
