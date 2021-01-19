@@ -93,7 +93,7 @@ export const merchantPayment = () => async (dispatch, getState) => {
           'Content-Type': 'application/json'
         }
       })
-      .then(res => res.json());
+      .then(res => console.log('res', res.json()));
 
     dispatch({
       type: PAY_MERCHANT_SUBSCRIPTION_FEE_SUCCESSFUL,
