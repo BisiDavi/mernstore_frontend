@@ -21,7 +21,7 @@ const MerchantApprovalPayment = () => {
   );
   const { loading, error } = merchantSubscriptionPayment;
 
-  const makeSubscriptionPayment = e => {
+  const submitHandler = e => {
     e.preventDefault();
     dispatch(
       MerchantSubscriptionPayment(
@@ -56,7 +56,7 @@ const MerchantApprovalPayment = () => {
         <ListGroup.Item>We offer reliable dispatcher Services.</ListGroup.Item>
       </ListGroup>
       <Form>
-        <Row>
+        <Row onSubmit={submitHandler}>
           <Col lg={6}>
             <Form.Group controlId="fullname">
               <Form.Label>Full name</Form.Label>
@@ -186,12 +186,7 @@ const MerchantApprovalPayment = () => {
         ) : error ? (
           <Message variant="danger">{error}</Message>
         ) : (
-          <Button
-            type="submit"
-            onClick={makeSubscriptionPayment}
-            className="mt-3"
-            variant="primary"
-          >
+          <Button type="submit" className="mt-3" variant="primary">
             Make Payment
           </Button>
         )}
