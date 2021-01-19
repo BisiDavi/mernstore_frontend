@@ -3,7 +3,7 @@ import {
   PAY_MERCHANT_SUBSCRIPTION_FEE_REQUEST,
   PAY_MERCHANT_SUBSCRIPTION_FEE_SUCCESSFUL,
   PAY_MERCHANT_SUBSCRIPTION_FEE_FAILED,
-  CONNECTION_SUCCESSFUL
+RAVE_CONNECTION_SUCCESSFUL
 } from '../constants/merchantConstants';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -105,8 +105,8 @@ export const merchantPayment = () => async (dispatch, getState) => {
     // window.location.redirect(resultArray)
     
     dispatch({
-      type: CONNECTION_SUCCESSFUL,
-      payload: resultArray
+      type: RAVE_CONNECTION_SUCCESSFUL,
+      payload: resultArray[0].data
     });
   } catch (error) {
     dispatch({
