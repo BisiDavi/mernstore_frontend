@@ -18,10 +18,8 @@ export const MerchantSubscriptionPayment = () => async (dispatch, getState) => {
     const {
       userLogin: { userInfo }
     } = getState();
+
     const config = {
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_SECRETKEY}`
-      },
       tx_ref: uuidv4(),
       amount: '20',
       currency: 'USD',
@@ -34,7 +32,11 @@ export const MerchantSubscriptionPayment = () => async (dispatch, getState) => {
       }
     };
 
-    const makePayment = await axiosInstance.post('/api/payment', config);
+    const makePayment = await axiosInstance.post('/api/payment', config, {
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_SECRETKEY}`
+      }
+    });
 
     dispatch({
       type: PAY_MERCHANT_SUBSCRIPTION_FEE_SUCCESSFUL,
