@@ -86,15 +86,22 @@ export const merchantPayment = () => async (dispatch, getState) => {
         phonenumber: userInfo.phonenumber
       }
     };
-    const makePayment = await raveInstance
-      .post('/payments', config, {
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_SECRETKEY}`,
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(res => console.log('res', res.json()));
 
+    const resultArray = [];
+    const populateData = data => resultArray.push(data);
+
+    function makePayment(populateData) {
+      raveInstance
+        .post('/payments', config, {
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRETKEY}`,
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(res => populateData(res.data))
+        .catch(err => console.log(err));
+    }
+    console.log('populatedData', populateData);
     dispatch({
       type: PAY_MERCHANT_SUBSCRIPTION_FEE_SUCCESSFUL,
       payload: makePayment
