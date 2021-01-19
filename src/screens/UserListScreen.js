@@ -13,20 +13,18 @@ const UserListScreen = ({ history }) => {
   const { loading, error, users } = userList;
 
   const userLogin = useSelector(state => state.userLogin);
-  const merchantLogin = useSelector(state => state.merchantLogin);
   const { userInfo } = userLogin;
-  const { merchantInfo } = merchantLogin;
 
   const userDelete = useSelector(state => state.userDelete);
   const { success: successDelete } = userDelete;
 
   useEffect(() => {
-    if ((userInfo && userInfo.isAdmin) || merchantInfo) {
+    if (userInfo && userInfo.isAdmin) {
       dispatch(listUsers());
     } else {
       history.push('/login');
     }
-  }, [dispatch, history, successDelete, userInfo, merchantInfo]);
+  }, [dispatch, history, successDelete, userInfo]);
 
   const deleteHandler = id => {
     if (window.confirm('Are you sure')) {

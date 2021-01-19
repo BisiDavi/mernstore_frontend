@@ -40,7 +40,7 @@ const HomeScreen = ({ match }) => {
         </Link>
       )}
       <h1>Latest Products</h1>
-      {userInfo !== null && userInfo.merchant ? (
+      {userInfo !== null && userInfo ? (
         <Notify
           text="Dear Merchant You are not Yet Approved as a Merchant, you need to pay $20 for registration. click to make"
           pageLink="/merchant-approval-payment"

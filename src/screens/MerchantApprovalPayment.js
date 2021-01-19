@@ -1,15 +1,20 @@
 import React from 'react';
-import { useDispatch } from 'react-boostrap';
-import { ListGroup, Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { ListGroup, Button, Spinner } from 'react-bootstrap';
 import { MerchantSubscriptionPayment } from '../actions/merchantActions';
-import { FormContainer } from '../imports';
+import { FormContainer, Message } from '../imports';
 
-const MerchantApprovalPayment = ({ location, history }) => {
+const MerchantApprovalPayment = () => {
   const dispatch = useDispatch();
+    const merchantSubscriptionPayment = useSelector(
+      state => state.merchantSubscription
+    );
+    const { loading, error } = merchantSubscriptionPayment;
 
   const makeSubscriptionPayment = () => {
     dispatch(MerchantSubscriptionPayment());
   };
+
   return (
     <FormContainer>
       <h1>Thanks for choosing to be an approved merchant with Jumga</h1>
@@ -27,15 +32,29 @@ const MerchantApprovalPayment = ({ location, history }) => {
         </ListGroup.Item>
         <ListGroup.Item>We offer reliable dispatcher Services.</ListGroup.Item>
       </ListGroup>
-
-      <Button
-        type="submit"
-        onClick={makeSubscriptionPayment}
-        className="mt-3"
-        variant="primary"
-      >
-        Make Payment: $20
-      </Button>
+      {loading ? (
+        <Button variant="primary" className="mt-3" disabled>
+          <Spinner
+            as="span"
+            animation="border"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+          />
+          <span className="sr-only">Loading...</span>
+        </Button>
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : (
+        <Button
+          type="submit"
+          onClick={makeSubscriptionPayment}
+          className="mt-3"
+          variant="primary"
+        >
+          Make Payment: $20
+        </Button>
+      )}
     </FormContainer>
   );
 };
