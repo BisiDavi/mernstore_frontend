@@ -2,7 +2,8 @@ import { axiosInstance, raveInstance } from './index';
 import {
   PAY_MERCHANT_SUBSCRIPTION_FEE_REQUEST,
   PAY_MERCHANT_SUBSCRIPTION_FEE_SUCCESSFUL,
-  PAY_MERCHANT_SUBSCRIPTION_FEE_FAILED
+  PAY_MERCHANT_SUBSCRIPTION_FEE_FAILED,
+  CONNECTION_SUCCESSFUL
 } from '../constants/merchantConstants';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -90,21 +91,22 @@ export const merchantPayment = () => async (dispatch, getState) => {
     const resultArray = [];
     const populateData = data => resultArray.push(data);
 
-    function makePayment(populateData) {
-      raveInstance
-        .post('/payments', config, {
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_SECRETKEY}`,
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(res => populateData(res.data))
-        .catch(err => console.log(err));
-    }
-    console.log('populatedData', populateData);
+    raveInstance
+      .post('/payments', config, {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRETKEY}`,
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => populateData(res.data))
+      .catch(err => console.log(err));
+    console.log('resultArray', resultArray);
+
+    // window.location.redirect(resultArray)
+    
     dispatch({
-      type: PAY_MERCHANT_SUBSCRIPTION_FEE_SUCCESSFUL,
-      payload: makePayment
+      type: CONNECTION_SUCCESSFUL,
+      payload: resultArray
     });
   } catch (error) {
     dispatch({
