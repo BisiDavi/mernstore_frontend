@@ -13,47 +13,44 @@ const MerchantPayment = () => {
 
   const makeSubscriptionPayment = () => {
     dispatch(merchantPayment());
-
-    return (
-      <FormContainer>
-        <h1>Thanks for choosing to be an approved merchant with Jumga</h1>
-        <p>Things you stand to gain:</p>
-        <ListGroup className="m-4">
-          <ListGroup.Item>
-            We accept payment in USD,Euro, NGN, Cedis and Kenya Shillings{' '}
-          </ListGroup.Item>
-        </ListGroup>
-        <ListGroup>
-          <ListGroup.Item>
-            We offer reliable dispatcher Services.
-          </ListGroup.Item>
-        </ListGroup>
-        {loading ? (
-          <Button variant="primary" className="mt-3" disabled>
-            <Spinner
-              as="span"
-              animation="border"
-              size="sm"
-              role="status"
-              aria-hidden="true"
-            />
-            <span className="sr-only">Loading...</span>
-          </Button>
-        ) : error ? (
-          <Message variant="danger">{error}</Message>
-        ) : (
-          <Button
-            type="submit"
-            onClick={() => makeSubscriptionPayment}
-            className="mt-3"
-            variant="primary"
-          >
-            Make Payment: $20
-          </Button>
-        )}
-      </FormContainer>
-    );
   };
+  return (
+    <FormContainer>
+      <h1>Thanks for choosing to be an approved merchant with Jumga</h1>
+      <p>Things you stand to gain:</p>
+      <ListGroup className="m-4">
+        <ListGroup.Item>
+          We accept payment in USD,Euro, NGN, Cedis and Kenya Shillings{' '}
+        </ListGroup.Item>
+      </ListGroup>
+      <ListGroup>
+        <ListGroup.Item>We offer reliable dispatcher Services.</ListGroup.Item>
+      </ListGroup>
+      {loading ? (
+        <Button variant="primary" className="mt-3" disabled>
+          <Spinner
+            as="span"
+            animation="border"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+          />
+          <span className="sr-only">Loading...</span>
+        </Button>
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : (
+        <Button
+          type="submit"
+          onClick={() => makeSubscriptionPayment}
+          className="mt-3"
+          variant="primary"
+        >
+          Make Payment: $20
+        </Button>
+      )}
+    </FormContainer>
+  );
 };
 
 export default MerchantPayment;
