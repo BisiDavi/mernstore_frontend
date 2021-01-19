@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ListGroup, Button, Spinner } from 'react-bootstrap';
 import { merchantPayment } from '../actions/merchantActions';
@@ -10,10 +10,7 @@ const MerchantPayment = () => {
   const { loading, error, paymentLink } = merchantSubscriptionState;
 
   const makeSubscriptionPayment = () => dispatch(merchantPayment());
-
-  useEffect(() => {
-    window.location.redirect(paymentLink.link);
-  }, [paymentLink]);
+  console.log('paymentLink', paymentLink);
 
   return (
     <FormContainer>

@@ -22,9 +22,10 @@ export const merchantSubscriptionReducer = (state = {}, action) => {
 export const merchantPaymentReducer = (state = { paymentLink: [] }, action) => {
   switch (action.type) {
     case RAVE_CONNECTION_REQUEST:
-      return { loading: true };
+      return { loading: true};
     case RAVE_CONNECTION_SUCCESSFUL:
-      return { loading: false, paymentLink: action.payload };
+      const {payload} = action
+      return { loading: false, paymentLink: payload[0].data };
     case RAVE_CONNECTION_REQUEST_FAILED:
       return { loading: false, error: action.payload };
     default:
