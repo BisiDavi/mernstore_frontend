@@ -1,4 +1,4 @@
-import { axiosInstance } from './index';
+import { axiosInstance, raveInstance } from './index';
 import {
   PAY_MERCHANT_SUBSCRIPTION_FEE_REQUEST,
   PAY_MERCHANT_SUBSCRIPTION_FEE_SUCCESSFUL,
@@ -86,16 +86,12 @@ export const merchantPayment = () => async (dispatch, getState) => {
         phonenumber: userInfo.phonenumber
       }
     };
-    const makePayment = await axiosInstance.post(
-      '/api/merchant/payments',
-      config,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_SECRETKEY}`,
-          'Content-Type': 'application/json'
-        }
+    const makePayment = await raveInstance.post('/payments', config, {
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_SECRETKEY}`,
+        'Content-Type': 'application/json'
       }
-    );
+    });
 
     dispatch({
       type: PAY_MERCHANT_SUBSCRIPTION_FEE_SUCCESSFUL,
