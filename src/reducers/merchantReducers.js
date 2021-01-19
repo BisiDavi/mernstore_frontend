@@ -4,7 +4,7 @@ import {
   RAVE_CONNECTION_SUCCESSFUL,
   PAY_MERCHANT_SUBSCRIPTION_FEE_FAILED,
   RAVE_CONNECTION_REQUEST,
-  RAVE_CONNECTION_REQUEST_FAILED
+  RAVE_CONNECTION_REQUEST_FAILED,
 } from '../constants/merchantConstants';
 
 export const merchantSubscriptionReducer = (state = {}, action) => {
@@ -19,15 +19,15 @@ export const merchantSubscriptionReducer = (state = {}, action) => {
       return state;
   }
 };
-export const merchantPaymentReducer = (state = { paymentLink: [] }, action) => {
-  switch (action.type) {
+export const merchantPaymentReducer = (state = { paymentLink: {} }, action) => {
+  const { type, payload } = action;
+  switch (type) {
     case RAVE_CONNECTION_REQUEST:
-      return { loading: true};
+      return { loading: true };
     case RAVE_CONNECTION_SUCCESSFUL:
-      const {payload} = action
-      return { loading: false, paymentLink: payload[0].data };
+      return { loading: false };    
     case RAVE_CONNECTION_REQUEST_FAILED:
-      return { loading: false, error: action.payload };
+      return { loading: false, error: payload };
     default:
       return state;
   }

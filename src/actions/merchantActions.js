@@ -5,7 +5,7 @@ import {
   PAY_MERCHANT_SUBSCRIPTION_FEE_FAILED,
   RAVE_CONNECTION_REQUEST_FAILED,
   RAVE_CONNECTION_REQUEST,
-  RAVE_CONNECTION_SUCCESSFUL
+  RAVE_CONNECTION_SUCCESSFUL,
 } from '../constants/merchantConstants';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -70,10 +70,11 @@ export const MerchantSubscriptionPayment = (
 export const merchantPayment = () => async (dispatch, getState) => {
   try {
     dispatch({
-      type: RAVE_CONNECTION_REQUEST,
+      type: RAVE_CONNECTION_REQUEST
     });
     const {
       userLogin: { userInfo }
+      // merchantPayment: { paymentLink }
     } = getState();
 
     const config = {
@@ -89,8 +90,28 @@ export const merchantPayment = () => async (dispatch, getState) => {
       }
     };
 
-    const resultArray = [];
-    const populateData = data => resultArray.push(data);
+    const connectionSuccessful = data =>
+      dispatch({
+        type: RAVE_CONNECTION_SUCCESSFUL,
+        payload: data
+      });
+
+    const loadLink = resultData => {
+      const { data } = resultData.payload;
+      const { link } = data;
+      console.log('loadink', link);
+      window.location.href= link;
+    };
+
+    const connectionFailed = error => {
+      return dispatch({
+        type: RAVE_CONNECTION_REQUEST_FAILED,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+      });
+    };
 
     raveInstance
       .post('/payments', config, {
@@ -99,16 +120,9 @@ export const merchantPayment = () => async (dispatch, getState) => {
           'Content-Type': 'application/json'
         }
       })
-      .then(res => populateData(res.data))
-      .catch(err => console.log(err));
-    console.log('resultArray', resultArray);
-
-    dispatch({
-      type: RAVE_CONNECTION_SUCCESSFUL,
-      payload: {        
-        resultArray
-      }
-    });
+      .then(res => connectionSuccessful(res.data))
+      .then(result => loadLink(result))
+      .catch(err => connectionFailed(err));
   } catch (error) {
     dispatch({
       type: RAVE_CONNECTION_REQUEST_FAILED,

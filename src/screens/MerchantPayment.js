@@ -4,13 +4,14 @@ import { ListGroup, Button, Spinner } from 'react-bootstrap';
 import { merchantPayment } from '../actions/merchantActions';
 import { FormContainer, Message } from '../imports';
 
-const MerchantPayment = () => {
+const MerchantPayment = ({ history }) => {
   const dispatch = useDispatch();
   const merchantSubscriptionState = useSelector(state => state.merchantPayment);
   const { loading, error, paymentLink } = merchantSubscriptionState;
 
   const makeSubscriptionPayment = () => dispatch(merchantPayment());
   console.log('paymentLink', paymentLink);
+
 
   return (
     <FormContainer>
