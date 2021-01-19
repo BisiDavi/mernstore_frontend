@@ -11,9 +11,8 @@ const MerchantPayment = () => {
   );
   const { loading, error } = merchantSubscriptionPayment;
 
-  const makeSubscriptionPayment = () => {
-    dispatch(merchantPayment());
-  };
+  const makeSubscriptionPayment = () => dispatch(merchantPayment());
+
   return (
     <FormContainer>
       <h1>Thanks for choosing to be an approved merchant with Jumga</h1>
@@ -42,7 +41,7 @@ const MerchantPayment = () => {
       ) : (
         <Button
           type="submit"
-          onClick={() => makeSubscriptionPayment}
+          onClick={makeSubscriptionPayment}
           className="mt-3"
           variant="primary"
         >
