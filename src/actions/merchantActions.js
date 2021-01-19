@@ -1,4 +1,4 @@
-import { axiosInstance, raveInstance } from './index';
+import { axiosInstance } from './index';
 import {
   PAY_MERCHANT_SUBSCRIPTION_FEE_REQUEST,
   PAY_MERCHANT_SUBSCRIPTION_FEE_SUCCESSFUL,
