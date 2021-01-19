@@ -86,14 +86,19 @@ export const merchantPayment = () => async (dispatch, getState) => {
         phonenumber: userInfo.phonenumber
       }
     };
-    const makePayment = await raveInstance.post('/', config, {
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_SECRETKEY}`,
-        'Access-Control-Request-Method': 'POST',
-        'Access-Control-Request-Headers': ['Authorization', 'Content-Type'],
-        'Content-Type': 'application/json'
+    const makePayment = await axiosInstance.post(
+      '/api/merchant/payments',
+      config,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRETKEY}`,
+          'Access-Control-Allow-Methods': 'POST,PUT,GET,DELETE, PATCH, OPTIONS',
+          'Access-Control-Request-Headers': ['Authorization', 'Content-Type'],
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
       }
-    });
+    );
 
     dispatch({
       type: PAY_MERCHANT_SUBSCRIPTION_FEE_SUCCESSFUL,
