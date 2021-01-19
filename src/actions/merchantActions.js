@@ -34,7 +34,8 @@ export const MerchantSubscriptionPayment = () => async (dispatch, getState) => {
 
     const makePayment = await axiosInstance.post('/api/payment', config, {
       headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_SECRETKEY}`
+        Authorization: `Bearer ${process.env.REACT_APP_SECRETKEY}`,
+        'Access-Control-Allow-Origin': '*'
       }
     });
 
